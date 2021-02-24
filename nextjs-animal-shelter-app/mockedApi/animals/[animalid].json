@@ -1,0 +1,6 @@
+{
+    "id": "n:[animalid]",
+    "name": "[#faker:name:firstName]",
+    "avatar": "[#faker:image:animals]",
+    "description": "[#faker:lorem:paragraph]"
+}
