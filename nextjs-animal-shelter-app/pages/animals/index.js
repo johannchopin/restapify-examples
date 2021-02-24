@@ -22,7 +22,7 @@ const Animals = () => {
         {animals.map((animal) => {
           return (
             <Link key={animal.id} href={`/animals/${animal.id}`} style={{cursor: 'pointer'}}>
-              <ListGroupItem styles={{cursor: 'pointer'}}>{animal.id}. {animal.name}</ListGroupItem>
+              <ListGroupItem action={true} styles={{cursor: 'pointer'}}>{animal.id}. {animal.name}</ListGroupItem>
             </Link>
           )
         })}
@@ -38,11 +38,11 @@ const Animals = () => {
     <>
       <MyNavbar />
 
-      <Row>
+      <Row className='mb-3'>
         <Col><h1>Our Residents</h1></Col>
-        <Col lg="2">
+        <Col lg="2" style={{display: 'flex'}}>
           Limit
-          <Form.Control as="select" size="lg" onChange={e => { fetchAnimals(e.target.value) }}>
+          <Form.Control as="select" size="sm" style={{width: 'fit-content'}} onChange={e => { fetchAnimals(e.target.value) }}>
             {[15, 25, 50, 100].map(limit => (
               <option key={limit}>{limit}</option>
             ))}

@@ -8,17 +8,16 @@ import Router from 'next/router';
 import Cookies from 'js-cookie';
 
 function MyNavbar() {
-
   const { user, setUser } = React.useContext(UserContext);
 
-  function onLogout() {
-    Cookies.set('jwt', '');
-    setUser({ user: null });
+  const onLogout = () => {
+    Cookies.remove('jwt');
+    setUser(null);
     Router.push('/');
   }
 
-  const renderUserNav = () => {
-    if (user) {
+  const renderUserNav = (isLogged) => {
+    if (isLogged) {
       return <Nav>
         <Navbar.Text className='pr-3'>
           Signed in as: {user.username}
@@ -43,7 +42,7 @@ function MyNavbar() {
     </Link>
     <Navbar.Toggle />
     <Navbar.Collapse className="justify-content-end">
-      {renderUserNav()}
+      {renderUserNav(user !== null)}
     </Navbar.Collapse>
   </Navbar>;
 }

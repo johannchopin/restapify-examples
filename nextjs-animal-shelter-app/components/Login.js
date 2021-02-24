@@ -4,9 +4,11 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Router from 'next/router';
 import Cookies from 'js-cookie';
+import UserContext from '../lib/userContext';
 import api from '../axiosStore'
 
 export default function Login() {
+  const { setUser } = React.useContext(UserContext)
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
 
@@ -15,7 +17,12 @@ export default function Login() {
     api.post('/auth/login', { email, password }).then((response) => {
       const { token } = response.data
       Cookies.set('jwt', token);
-      Router.push('/');
+
+      // fetch user data
+      api.get('/me').then(({ data }) => {
+        setUser(data)
+        Router.push('/');
+      })
     }).catch(({ response }) => {
       if (response?.status === 401) {
         alert('Invalid credentials')

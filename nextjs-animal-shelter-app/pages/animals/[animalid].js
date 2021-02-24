@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import { Card, Col, Button } from 'react-bootstrap';
+import { Card, Row, Col, Button } from 'react-bootstrap';
 
 import api from '../../axiosStore'
 
@@ -29,17 +29,14 @@ export default function Animal() {
 
   const renderAnimal = () => {
     return (
-      <>
-        <MyNavbar />
-        <Card style={{ width: '18rem' }}>
-          <Card.Img variant="top" src={animal.avatar} />
-          <Card.Body>
-            <Card.Title>{animal.name}</Card.Title>
-            <Card.Text>{animal.description}</Card.Text>
-            <Button variant="primary" onClick={adopt}>Adopt me</Button>
-          </Card.Body>
-        </Card>
-      </>
+      <Card style={{ width: '22rem', margin: 'auto' }}>
+        <Card.Img variant="top" src={animal.avatar} />
+        <Card.Body>
+          <Card.Title>{animal.name}</Card.Title>
+          <Card.Text>{animal.description}</Card.Text>
+          <Button variant="primary" onClick={adopt}>Adopt me</Button>
+        </Card.Body>
+      </Card>
     )
   }
 
@@ -48,11 +45,17 @@ export default function Animal() {
   }, [animalid])
 
   return (
-    <Col>
-      {!animal 
-        ? <p>Loading...</p> 
-        : renderAnimal()
-      }
-    </Col>
+    <>
+      <MyNavbar />
+      <Row>
+        <Col>
+          {!animal 
+            ? <p>Loading...</p> 
+            : renderAnimal()
+          }
+        </Col>
+      </Row>
+    </>
+    
     )
 }
