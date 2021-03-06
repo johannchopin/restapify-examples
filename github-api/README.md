@@ -2,7 +2,7 @@
 
 POC that you can mock a real API architecture by mocking some enpoints of the [GitHub API](https://docs.github.com/en/enterprise-server@2.22/rest/reference).
 
-Just serve the `./api` folder to see it:
+Just serve the `./api` folder to use it:
 
 ```shell
 restapify serve ./api
