@@ -1,0 +1,4 @@
+{
+  "id": "n:[userid]",
+  "email": "[#faker:internet:email]"
+}

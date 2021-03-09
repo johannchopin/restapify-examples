@@ -1,0 +1,9 @@
+[
+  "#for i in range([q:limit|25])",
+  {
+    "id": "n:[i]",
+    "creatorId": "n:[userid]",
+    "content": "[#faker:lorem:sentences]"
+  },
+  "#endfor"
+]
