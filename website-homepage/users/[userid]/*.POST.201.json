@@ -1,0 +1,7 @@
+{
+  "success": true,
+  "data": {
+    "id": "n:[userid]",
+    "email": "[#faker:internet:email]"
+  }
+}

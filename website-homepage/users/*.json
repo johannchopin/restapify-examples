@@ -1,0 +1,8 @@
+[
+  "#for i in range([q:limit|25])",
+  {
+    "id": "n:[i]",
+    "email": "[#faker:internet:email]"
+  },
+  "#endfor"
+]

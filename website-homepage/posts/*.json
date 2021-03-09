@@ -1,0 +1,8 @@
+[
+  "#for i in range(5)",
+  {
+    "id": "n:[i]",
+    "title": "Post n: #[i]"
+  },
+  "#endfor"
+]
