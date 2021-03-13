@@ -23,7 +23,7 @@ export default function Animal() {
         alert(`You have adopted ${animal.name}`)
       }
 		}).catch(({ response }) => {
-      if (response.status === 403) alert(`Not possible to adopt ${animal.name}`)
+      if (response.status === 404) alert(`Not possible to adopt ${animal.name}`)
     })
   }
 
@@ -56,6 +56,5 @@ export default function Animal() {
         </Col>
       </Row>
     </>
-    
-    )
+  )
 }
