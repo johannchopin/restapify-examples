@@ -10,19 +10,18 @@ const Animals = () => {
   const [animals, setAnimals] = React.useState(null)
 
   const fetchAnimals = (limit) => {
-    const query = limit ? `?limit=${limit}` : ''
-    api.get(`/animals/${query}`).then((response) => {
+    api.get(`/animals?limit=${limit}`).then((response) => {
 			setAnimals(response.data)
 		})
   }
 
   const renderAnimals = () => {
     return (
-      <ListGroup>
+      <ListGroup className="px-3">
         {animals.map((animal) => {
           return (
             <Link key={animal.id} href={`/animals/${animal.id}`} style={{cursor: 'pointer'}}>
-              <ListGroupItem action={true} styles={{cursor: 'pointer'}}>{animal.id}. {animal.name}</ListGroupItem>
+              <ListGroupItem action styles={{cursor: 'pointer'}}>{animal.id}. {animal.name}</ListGroupItem>
             </Link>
           )
         })}
@@ -31,18 +30,24 @@ const Animals = () => {
   }
 
   React.useEffect(() => {
-    fetchAnimals()
+    fetchAnimals(15)
   }, [])
 
   return (
     <>
       <MyNavbar />
 
-      <Row className='mb-3'>
+      <Row className='mb-3 p-3'>
         <Col><h1>Our Residents</h1></Col>
         <Col lg="2" style={{display: 'flex'}}>
           Limit
-          <Form.Control as="select" size="sm" style={{width: 'fit-content'}} onChange={e => { fetchAnimals(e.target.value) }}>
+          <Form.Control 
+            className="ml-2 align-items-center" 
+            as="select" 
+            size="sm" 
+            style={{width: 'fit-content'}} 
+            onChange={e => { fetchAnimals(e.target.value) }}
+          >
             {[15, 25, 50, 100].map(limit => (
               <option key={limit}>{limit}</option>
             ))}
